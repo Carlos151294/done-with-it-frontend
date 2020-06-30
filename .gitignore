@@ -8,6 +8,11 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+AppEntry.map
+AppEntry.bundle
+launch.json
+package-lock.json
+debuggerWorker.js
 
 # macOS
 .DS_Store
