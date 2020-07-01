@@ -1,6 +1,8 @@
 import React from 'react';
-
 import { StyleSheet, View, StatusBar, Image } from 'react-native';
+
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import colors from '../config/colors';
 
 export function ViewImageScreen() {
@@ -8,8 +10,12 @@ export function ViewImageScreen() {
         <View style={styles.windowContainer}>
             <View style={styles.bodyContainer}>
                 <View style={styles.buttonsContainer}>
-                    <View style={styles.closeIcon}></View>
-                    <View style={styles.deleteIcon}></View>
+                    <View style={styles.closeIcon}>
+                        <MaterialCommunityIcons name="close" size={30} color="white" />
+                    </View>
+                    <View style={styles.deleteIcon}>
+                        <MaterialCommunityIcons name="trash-can-outline" size={30} color="white" />
+                    </View>
                 </View>
                 <View style={styles.imageContainer}>
                     <Image
@@ -34,7 +40,7 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         width: '100%',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         paddingTop: 5,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -47,14 +53,16 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     closeIcon: {
-        backgroundColor: colors.primary,
         width: 50,
-        height: 50
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     deleteIcon: {
-        backgroundColor: colors.secondary,
         width: 50,
-        height: 50
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     image: {
         width: '100%',
