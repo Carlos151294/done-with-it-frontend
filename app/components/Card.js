@@ -4,7 +4,6 @@ import { StyleSheet, View, Image, Text } from 'react-native';
 import colors from '../config/colors';
 
 function Card({ title, subTitle, image }) {
-    console.log(image);
     return (
         <View style={styles.cardContainer}>
             <Image
