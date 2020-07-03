@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, StatusBar, View } from 'react-native';
+import { StyleSheet, Platform, View } from 'react-native';
 import colors from '../config/colors';
 
-const Screen = ({ children, backgroundColor }) => {
+const Screen = ({ children, style }) => {
     return (
-        <View style={[styles.container, { backgroundColor: colors[backgroundColor] }]}>
+        <View style={[styles.container, style]}>
             {children}
         </View>
     );
@@ -13,7 +13,7 @@ const Screen = ({ children, backgroundColor }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: StatusBar.currentHeight
+        paddingTop: Platform.OS === 'android' ? 25 : 50
     }
 })
 

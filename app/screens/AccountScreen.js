@@ -25,7 +25,7 @@ const AccountScreen = () => {
         },
     ];
     return (
-        <Screen backgroundColor='light'>
+        <Screen style={styles.screen}>
             <ListItem
                 style={styles.userItem}
                 title="Carlos Fn"
@@ -42,11 +42,13 @@ const AccountScreen = () => {
                         <ListItem
                             style={styles.tabItem}
                             title={item.title}
-                            IconComponent={<Icon name={item.icon} color={item.color} backgroundColor={item.iconBackgroundColor} size={40} />}
+                            IconComponent={
+                                <Icon name={item.icon} color={item.color} backgroundColor={item.iconBackgroundColor} size={40} />
+                            }
                             onPress={() => console.log('item pressed')}
                         />
                     }
-                    ItemSeparatorComponent={() => <ListItemSeparator />}
+                    ItemSeparatorComponent={ListItemSeparator}
                 />
             </View>
 
@@ -62,8 +64,8 @@ const AccountScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1
+    screen: {
+        backgroundColor: colors.light
     },
     userItem: {
         marginTop: 20,

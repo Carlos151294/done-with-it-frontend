@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import colors from '../config/colors';
 
-const CustomButton = ({ title, color, onPress }) => {
+const CustomButton = ({ title, color = 'primary', onPress }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         padding: 15,
         justifyContent: 'center',
         alignItems: 'center',
+        marginVertical: 10
     },
     text: {
         fontSize: 18,

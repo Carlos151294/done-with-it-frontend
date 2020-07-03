@@ -1,18 +1,19 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import ListingsScreen from './app/screens/ListingsScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
-import AccountScreen from './app/screens/AccountScreen';
+
+import LoginScreen from './app/screens/LoginScreen';
+
+// const categories = [
+//   { label: "Forniture", value: 1 },
+//   { label: "Clothing", value: 2 },
+//   { label: "Cameras", value: 3 },
+// ];
 
 export default function App() {
-  // return <MessagesScreen />;
-  // return <ListingsScreen />;
-  return <AccountScreen />
+  return (
+    <LoginScreen />
+  );
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   paddingTop: StatusBar.currentHeight
-  // }
 });
