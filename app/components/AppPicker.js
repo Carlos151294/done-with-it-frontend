@@ -7,16 +7,18 @@ import defaultStyles from '../config/styles';
 import AppText from '../components/AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
+import colors from '../config/colors';
 
-export default function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+export default function AppPicker({ icon, items, selectedItem, onSelectItem, placeholder,  }) {
    const [modalVisible, setModalVisible] = useState(false);
 
    return (
       <React.Fragment>
          <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
             <View style={styles.container}>
-               { icon &&  <MaterialCommunityIcons style={styles.icon} name={icon} size={20} color={defaultStyles.colors.medium} />}
-               <AppText style={styles.text}>{selectedItem ? selectedItem.label : placeholder}</AppText>
+               { icon &&  <MaterialCommunityIcons style={styles.icon} name={icon} size={20} color={defaultStyles.colors.medium} /> }
+               { selectedItem && <AppText style={styles.text}>{selectedItem.label}</AppText> }
+               { !selectedItem && <AppText style={styles.placeholder}>{placeholder}</AppText> }
                <MaterialCommunityIcons name="chevron-down" size={20} color={defaultStyles.colors.medium} />
             </View>
          </TouchableWithoutFeedback>
@@ -55,7 +57,12 @@ const styles = StyleSheet.create({
    icon: {
       marginHorizontal: 10
    },
+   placeholder: {
+      flex: 1,
+      color: defaultStyles.colors.medium
+   },
    text: {
-      flex: 1
+      flex: 1,
+      color: defaultStyles.colors.dark
    }
 })
