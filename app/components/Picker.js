@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Modal, Button, TouchableOpacity } from 'react-native';
-import { TouchableWithoutFeedback, FlatList } from 'react-native-gesture-handler';
+import { View, StyleSheet, Modal, Button, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import defaultStyles from '../config/styles';

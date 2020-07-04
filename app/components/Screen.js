@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Platform, View } from 'react-native';
-import colors from '../config/colors';
 
 const Screen = ({ children, style }) => {
     return (
