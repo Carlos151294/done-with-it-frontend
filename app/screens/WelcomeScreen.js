@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground, StatusBar, Image, Text } from 'react-native';
 
-import CustomButton from '../components/CustomButton';
-
-import colors from '../config/colors';
+import Button from '../components/Button';
 
 export function WelcomeScreen() {
     return (
@@ -20,11 +18,11 @@ export function WelcomeScreen() {
                     <Text style={styles.slogan}>Sell What You Don't Need</Text>
                 </View>
                 <View style={styles.buttonsContainer}>
-                    <CustomButton
+                    <Button
                         title="LOGIN"
                         color="primary"
                         onPress={() => console.log('Button pressed!')} />
-                    <CustomButton
+                    <Button
                         title="REGISTER"
                         color="secondary"
                         onPress={() => console.log('Button pressed!')} />

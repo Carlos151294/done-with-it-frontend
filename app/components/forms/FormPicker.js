@@ -2,21 +2,23 @@ import React from 'react';
 import { useFormikContext } from 'formik';
 
 import ErrorMessage from './ErrorMessage';
-import AppPicker from '../AppPicker';
+import Picker from '../Picker';
 
-function AppFormPicker({ items, name, placeholder }) {
+function FormPicker({ iconsMode, items, name, placeholder, width }) {
    const { errors, setFieldValue, touched, values } = useFormikContext();
    return (
       <React.Fragment>
-         <AppPicker
+         <Picker
+            iconsMode={iconsMode}
             items={items}
             onSelectItem={item => setFieldValue(name, item)} 
             placeholder={placeholder}
             selectedItem={values[name]}
+            width={width}
          />
          <ErrorMessage error={errors[name]} visible={touched[name]}/>
       </React.Fragment>
    );
 }
 
-export default AppFormPicker;
+export default FormPicker;

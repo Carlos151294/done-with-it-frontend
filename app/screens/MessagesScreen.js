@@ -9,8 +9,8 @@ import ListItemDeleteAction from '../components/ListItemDeleteAction';
 const initialMessages = [
     {
         id: 1,
-        title: 'T1',
-        description: 'D1',
+        title: `The Rise and Fall of Nikola Tesla and his Tower. The inventor’s vision of a global wireless-transmission tower proved to be his undoing`,
+        description: `By the end of his brilliant and tortured life, the Serbian physicist, engineer and inventor Nikola Tesla was penniless and living in a small New York City hotel room. He spent days in a park surrounded by the creatures that mattered most to him—pigeons—and his sleepless nights working over mathematical equations and scientific problems in his head. That habit would confound scientists and scholars for decades after he died, in 1943. His inventions were designed and perfected in his imagination. Tesla believed his mind to be without equal, and he wasn’t above chiding his contemporaries, such as Thomas Edison, who once hired him. “If Edison had a needle to find in a haystack,” Tesla once wrote, “he would proceed at once with the diligence of the bee to examine straw after straw until he found the object of his search. I was a sorry witness of such doing that a little theory and calculation would have saved him ninety percent of his labor.”`,
         image: require('../assets/profile-picture.png')
     },
     {
@@ -41,6 +41,7 @@ function MessagesScreen() {
                         title={item.title}
                         subTitle={item.description}
                         image={item.image}
+                        showChevrons
                         onPress={() => console.log('Item pressed')}
                         renderRightActions={() =>
                             <ListItemDeleteAction onPress={() => handleDelete(item)} />

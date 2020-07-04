@@ -11,7 +11,7 @@ export default function Icon({ name, backgroundColor = 'white', size = 30, color
             borderRadius: size / 2,
             width: size,
             height: size,
-            backgroundColor: colors[backgroundColor] 
+            backgroundColor: colors[backgroundColor] ? colors[backgroundColor] : backgroundColor
         }]}>
       <MaterialCommunityIcons name={name} size={size * 0.5} color={colors[color]} />
     </View>
@@ -20,7 +20,6 @@ export default function Icon({ name, backgroundColor = 'white', size = 30, color
 
 const styles = StyleSheet.create({
   icon: {
-    marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },

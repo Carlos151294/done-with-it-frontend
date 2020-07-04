@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import colors from '../config/colors';
 
-const CustomButton = ({ title, color = 'primary', onPress }) => {
+const AppButton = ({ title, color = 'primary', onPress }) => {
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CustomButton;
+export default AppButton;
