@@ -6,6 +6,7 @@ import Picker from '../Picker';
 
 function FormPicker({ iconsMode, items, name, placeholder, width }) {
    const { errors, setFieldValue, touched, values } = useFormikContext();
+
    return (
       <React.Fragment>
          <Picker

@@ -1,29 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import Screen from '../components/Screen';
-import { Form, FormField, FormPicker, SubmitButton } from '../components/forms';
+import { Form, FormField, FormPicker, FormImagePicker, SubmitButton } from '../components/forms';
+import useLocation from '../hooks/useLocation';
 // import AppFormPicker from '../components/forms/AppFormPicker';
 
 const validationSchema = Yup.object().shape({
    title: Yup.string().required().min(1).label('Title'),
    price: Yup.number().required().min(1).max(10000).label("Price"),
    category: Yup.string().required().nullable().label("Category"),
-   description: Yup.string().label("Description")
+   description: Yup.string().label("Description"),
+   imageList: Yup.array().min(1, "Please select at least one image").of(Yup.string())
 });
-
-const categories = [
-   { label: "Forniture", value: 1 },
-   { label: "Cars", value: 2 },
-   { label: "Cameras", value: 3 },
-   { label: "Games", value: 4 },
-   { label: "Clothing", value: 5 },
-   { label: "Sports", value: 6 },
-   { label: "Movies & Music", value: 7 },
-   { label: "Books", value: 8 }
-   // { label: "Ohter", value: 9 }
-];
 
 const categoriesLastEdition = [
    { label: "Forniture", value: 1, icon: 'floor-lamp', color: '#fc5c65' },
@@ -37,13 +27,21 @@ const categoriesLastEdition = [
    { label: "Ohter", value: 9, icon: 'bookmark-outline', color: '#A9A9A9' }
  ];
 
+const imageUrisList = [
+   'file:/data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FDoneWithIt-75972a8a-27f7-477d-97ba-b56bb197c1fd/ImagePicker/6575f3cb-aa15-4f5a-97ed-e7e3737d2e50.jpg',
+   'file:/data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FDoneWithIt-75972a8a-27f7-477d-97ba-b56bb197c1fd/ImagePicker/ba3f35f6-e28a-4d08-a635-bd3ee7f27454.jpg'
+];
+
 function RegisterScreen() {
+   const location = useLocation();
+
    return (
       <Screen style={styles.container}>
          <Form 
-            initialValues={{title: '', price: '', category: null, description: ''}}
-            onSubmit={values => console.log(values)}
+            initialValues={{imageList: imageUrisList, title: '', price: '', category: null, description: ''}}
+            onSubmit={values => console.log(location)}
             validationSchema={validationSchema}>
+            <FormImagePicker name="imageList" />
             <FormField 
               maxLength={255}
               name="title"
