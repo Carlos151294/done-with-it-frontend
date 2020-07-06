@@ -3,7 +3,7 @@ import { StyleSheet, View, ImageBackground, StatusBar, Image, Text } from 'react
 
 import Button from '../components/Button';
 
-export function WelcomeScreen() {
+export function WelcomeScreen({ navigation }) {
     return (
         <ImageBackground
             blurRadius={2}
@@ -21,11 +21,11 @@ export function WelcomeScreen() {
                     <Button
                         title="LOGIN"
                         color="primary"
-                        onPress={() => console.log('Button pressed!')} />
+                        onPress={() => navigation.navigate('Login')} />
                     <Button
                         title="REGISTER"
                         color="secondary"
-                        onPress={() => console.log('Button pressed!')} />
+                        onPress={() => navigation.navigate('Register')} />
                 </View>
             </View>
         </ImageBackground>

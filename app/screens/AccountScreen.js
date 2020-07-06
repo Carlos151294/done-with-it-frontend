@@ -7,7 +7,7 @@ import colors from '../config/colors';
 import ListItemSeparator from '../components/ListItemSeparator';
 import Icon from '../components/Icon';
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
     const tabs = [
         {
             id: 1,
@@ -21,7 +21,8 @@ const AccountScreen = () => {
             title: "My Messages",
             icon: 'email',
             iconBackgroundColor: 'secondary',
-            color: 'white'
+            color: 'white',
+            targerScreen: 'Messages'
         },
     ];
     return (
@@ -29,7 +30,7 @@ const AccountScreen = () => {
             <ListItem
                 style={styles.userItem}
                 title="Carlos Fn"
-                subTitle="carlos.floresnava@stefanini.com"
+                subTitle="carlos.floresnava@thomsonreuters.com"
                 image={require('../assets/happy.jpeg')}
                 onPress={() => console.log('item pressed')}
             />
@@ -45,7 +46,7 @@ const AccountScreen = () => {
                             IconComponent={
                                 <Icon name={item.icon} color={item.color} backgroundColor={item.iconBackgroundColor} size={40} />
                             }
-                            onPress={() => console.log('item pressed')}
+                            onPress={() => navigation.navigate(item.targerScreen)}
                         />
                     }
                     ItemSeparatorComponent={ListItemSeparator}
