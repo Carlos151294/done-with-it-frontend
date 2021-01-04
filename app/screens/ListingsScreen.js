@@ -25,7 +25,7 @@ export default function ListingsScreen({ navigation }) {
                     <React.Fragment>
                         <View style={styles.error}>
                             <AppText>Couldn't retrieve the listings.</AppText>
-                            <Button title="Retry" onPress={loadListings} />
+                            <Button title="Retry" onPress={() => getListingsApi.request()} /> 
                         </View>
                     </React.Fragment>
                 }
