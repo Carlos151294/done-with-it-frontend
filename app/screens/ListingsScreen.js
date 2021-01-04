@@ -12,27 +12,27 @@ import listingsApi from '../api/listings';
 import useApi from '../hooks/useApi';
 
 export default function ListingsScreen({ navigation }) {
-    const getListingsApi = useApi(listingsApi.getListings);
+    const { data, loading, error, request: loadListings } = useApi(listingsApi.getListings);
 
     useEffect(() => {
-        getListingsApi.request();    
+        loadListings();    
     }, []);
 
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
-                { getListingsApi.error && 
+                { error && 
                     <React.Fragment>
                         <View style={styles.error}>
                             <AppText>Couldn't retrieve the listings.</AppText>
-                            <Button title="Retry" onPress={() => getListingsApi.request()} /> 
+                            <Button title="Retry" onPress={loadListings} /> 
                         </View>
                     </React.Fragment>
                 }
-                {getListingsApi.loading && <ActivityIndicator visible={getListingsApi.loading} />}
-                {!getListingsApi.loading && 
+                {loading && <ActivityIndicator visible={loading} />}
+                {!loading && 
                     <FlatList
-                        data={getListingsApi.data}
+                        data={data}
                         keyExtractor={listing => listing.id.toString()}
                         renderItem={({ item }) =>
                             <Card
