@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import Screen from '../components/Screen';
 import { Form, FormField, FormPicker, FormImagePicker, SubmitButton } from '../components/forms';
 import useLocation from '../hooks/useLocation';
+import listingsApi from '../api/listings';
 // import AppFormPicker from '../components/forms/AppFormPicker';
 
 const validationSchema = Yup.object().shape({
@@ -35,11 +36,17 @@ const imageUrisList = [
 function RegisterScreen() {
    const location = useLocation();
 
+   const handleSubmit = async (listing) => {
+      const result = await listingsApi.addListing({ ...listing, location });
+      if (!result.ok) return alert('Could not save the listing');
+      alert('Success');
+   };
+
    return (
       <Screen style={styles.container}>
          <Form 
-            initialValues={{imageList: imageUrisList, title: '', price: '', category: null, description: ''}}
-            onSubmit={values => console.log(location)}
+            initialValues={{imageList: [], title: '', price: '', category: null, description: ''}}
+            onSubmit={handleSubmit}
             validationSchema={validationSchema}>
             <FormImagePicker name="imageList" />
             <FormField 
