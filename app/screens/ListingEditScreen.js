@@ -6,7 +6,7 @@ import Screen from '../components/Screen';
 import { Form, FormField, FormPicker, FormImagePicker, SubmitButton } from '../components/forms';
 import useLocation from '../hooks/useLocation';
 import listingsApi from '../api/listings';
-// import AppFormPicker from '../components/forms/AppFormPicker';
+import UploadScreen from './UploadScreen';
 
 const validationSchema = Yup.object().shape({
    title: Yup.string().required().min(1).label('Title'),
@@ -33,17 +33,29 @@ const imageUrisList = [
    'file:/data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FDoneWithIt-75972a8a-27f7-477d-97ba-b56bb197c1fd/ImagePicker/ba3f35f6-e28a-4d08-a635-bd3ee7f27454.jpg'
 ];
 
-function RegisterScreen() {
+function ListEditScreen() {
    const location = useLocation();
+   const [uploadVisible, setUploadVisible] = useState(false);
+   const [progress, setProgress] = useState(0);
 
-   const handleSubmit = async (listing) => {
-      const result = await listingsApi.addListing({ ...listing, location });
-      if (!result.ok) return alert('Could not save the listing');
-      alert('Success');
+   const handleSubmit = async (listing, { resetForm }) => {
+      setProgress(0);
+      setUploadVisible(true);
+      const result = await listingsApi.addListing(
+         { ...listing, location }, 
+         progress => setProgress(progress)
+      );
+
+      if (!result.ok) {
+         setUploadVisible(false);
+         return alert('Could not save the listing');
+      } 
+      resetForm();
    };
 
    return (
       <Screen style={styles.container}>
+         <UploadScreen progress={progress} visible={uploadVisible} onDone={() => setUploadVisible(false)} />
          <Form 
             initialValues={{imageList: [], title: '', price: '', category: null, description: ''}}
             onSubmit={handleSubmit}
@@ -83,4 +95,4 @@ const styles = StyleSheet.create({
    }
 })
 
-export default RegisterScreen;
+export default ListEditScreen;
