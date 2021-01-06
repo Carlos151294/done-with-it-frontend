@@ -19,25 +19,25 @@ export default function ListingsScreen({ navigation }) {
     }, []);
 
     return (
-        <Screen style={styles.screen}>
-            <View style={styles.container}>
-                { error && 
-                    <React.Fragment>
-                        <View style={styles.error}>
-                            <AppText>Couldn't retrieve the listings.</AppText>
-                            <Button title="Retry" onPress={loadListings} /> 
-                        </View>
-                    </React.Fragment>
-                }
-                {loading && <ActivityIndicator visible={loading} />}
-                {!loading && 
+       <>
+            <ActivityIndicator visible={loading} />
+            <Screen style={styles.screen}>
+                <View style={styles.container}>
+                    { error && 
+                        <React.Fragment>
+                            <View style={styles.error}>
+                                <AppText>Couldn't retrieve the listings.</AppText>
+                                <Button title="Retry" onPress={loadListings} /> 
+                            </View>
+                        </React.Fragment>
+                    }
                     <FlatList
                         data={data}
                         keyExtractor={listing => listing.id.toString()}
                         renderItem={({ item }) =>
                             <Card
                                 title={item.title}
-                                subTitle={item.subTitle}
+                                subTitle={`$${item.price}`}
                                 imageUrl={item.images[0].url}
                                 onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
                                 thumbnailUrl={item.images[0].thumbnailUrl}
@@ -46,9 +46,10 @@ export default function ListingsScreen({ navigation }) {
                         ItemSeparatorComponent={() => <View style={styles.separator} />}
                         // refreshing={refreshing}
                         // onRefresh={() => console.log('Refreshing...')}
-                    />}
-            </View>
-        </Screen>
+                    />
+                </View>
+            </Screen>
+        </>
     )
 }
 

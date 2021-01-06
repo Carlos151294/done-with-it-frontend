@@ -18,7 +18,7 @@ function ListingDetailsScreen({ route }) {
                 uri={listing.images[0].url} />
             <View style={styles.detailsContainer}>
                 <Text style={styles.title}>{listing.title}</Text>
-                <Text style={styles.price}>{listing.subTitle}</Text>
+                <Text style={styles.price}>${listing.price}</Text>
                 <View style={styles.userContainer}>
                     <ListItem
                         image={require('../assets/profile-picture.png')}
