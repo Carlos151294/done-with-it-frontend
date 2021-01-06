@@ -18,11 +18,13 @@
     "apisauce": "^1.1.1",
     "expo": "~38.0.8",
     "expo-blur": "~8.1.2",
+    "expo-constants": "~9.1.1",
     "expo-image-picker": "~8.3.0",
     "expo-location": "~8.2.1",
     "expo-permissions": "~9.0.1",
     "expo-status-bar": "^1.0.0",
     "formik": "^2.1.4",
+    "jwt-decode": "^3.1.2",
     "lottie-react-native": "~2.6.1",
     "moment": "^2.29.1",
     "react": "~16.11.0",
@@ -36,7 +38,7 @@
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.11.7",
     "yup": "^0.29.1",
-    "expo-constants": "~9.1.1"
+    "expo-secure-store": "~9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
