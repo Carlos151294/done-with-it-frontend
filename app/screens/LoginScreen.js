@@ -17,11 +17,15 @@ const LoginScreen = () => {
    const [loginFailed, setLoginFailed] = useState(false);
 
    const handleSubmit = async ({ email, password }) => {
-      const result = await authApi.login(email, password);
+      try {
+         const result = await authApi.login(email, password);
 
-      if (!result.ok) return setLoginFailed(true);
-      setLoginFailed(false);
-      login(result.data);
+         if (!result.ok) return setLoginFailed(true);
+         setLoginFailed(false);
+         login(result.data);
+      } catch (error) {
+         console.log(error);
+      }
    };
    return (
       <Screen style={styles.container}>
