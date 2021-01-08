@@ -42,7 +42,7 @@ function MessagesScreen() {
                         subTitle={item.description}
                         image={item.image}
                         showChevrons
-                        onPress={() => console.log('Item pressed')}
+                        onPress={() => {}}
                         renderRightActions={() =>
                             <ListItemDeleteAction onPress={() => handleDelete(item)} />
                         }

@@ -7,6 +7,7 @@ import colors from '../config/colors';
 import ListItemSeparator from '../components/ListItemSeparator';
 import Icon from '../components/Icon';
 import useAuth from '../auth/useAuth';
+import Paths from '../navigation/routes';
 
 const tabs = [
     {
@@ -14,7 +15,8 @@ const tabs = [
         title: "My Listings",
         icon: 'format-list-bulleted',
         iconBackgroundColor: 'primary',
-        color: 'white'
+        color: 'white',
+        targetScreen: Paths.LISTINGS
     },
     {
         id: 2,
@@ -22,7 +24,7 @@ const tabs = [
         icon: 'email',
         iconBackgroundColor: 'secondary',
         color: 'white',
-        targerScreen: 'Messages'
+        targetScreen: Paths.MESSAGES
     },
 ];
 
@@ -36,7 +38,7 @@ const AccountScreen = ({ navigation }) => {
                 title={user.name}
                 subTitle={user.email}
                 image={require('../assets/happy.jpeg')}
-                onPress={() => console.log('item pressed')}
+                onPress={() => {}}
             />
 
             <View style={styles.tabsContainer}>
@@ -50,7 +52,7 @@ const AccountScreen = ({ navigation }) => {
                             IconComponent={
                                 <Icon name={item.icon} color={item.color} backgroundColor={item.iconBackgroundColor} size={40} />
                             }
-                            onPress={() => navigation.navigate(item.targerScreen)}
+                            onPress={() => navigation.navigate(item.targetScreen)}
                         />
                     }
                     ItemSeparatorComponent={ListItemSeparator}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, FlatList,  } from 'react-native';
 
 import AppText from '../components/Text';
@@ -13,6 +13,7 @@ import useApi from '../hooks/useApi';
 
 export default function ListingsScreen({ navigation }) {
     const { data, loading, error, request: loadListings } = useApi(listingsApi.getListings);
+    const [refreshing, setRefreshing] = useState(false);
 
     useEffect(() => {
         loadListings();    
@@ -44,8 +45,11 @@ export default function ListingsScreen({ navigation }) {
                             />
                         }
                         ItemSeparatorComponent={() => <View style={styles.separator} />}
-                        // refreshing={refreshing}
-                        // onRefresh={() => console.log('Refreshing...')}
+                        refreshing={refreshing}
+                        onRefresh={() => {
+                            setRefreshing(true);
+                            setTimeout(() => { setRefreshing(false) }, 2000)
+                        }}
                     />
                 </View>
             </Screen>
