@@ -6,6 +6,7 @@ import Screen from '../components/Screen';
 import { ErrorMessage, Form, FormField, SubmitButton } from '../components/forms';
 import authApi from '../api/auth';
 import useAuth from '../auth/useAuth';
+import logger from '../utility/logger';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -24,7 +25,7 @@ const LoginScreen = () => {
          setLoginFailed(false);
          login(result.data);
       } catch (error) {
-         console.log(error);
+         logger.log(error);
       }
    };
    return (

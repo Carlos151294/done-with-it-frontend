@@ -1,10 +1,11 @@
 import React from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
+import { Notifications } from 'expo';
 import * as Yup from 'yup';
 
 import { Form, FormField, SubmitButton } from './forms';
 import messagesApi from '../api/messages';
-import { Notifications } from 'expo';
+import logger from '../utility/logger';
 
 const validationSchema = Yup.object().shape({
     message: Yup.string().required().min(1).label('Message'),
@@ -27,7 +28,7 @@ export default ({ listing }) => {
                 body: 'Your message was sent to the seller.',
             });
         } catch (error) {
-            console.log(error);
+            logger.log(error);
         }
     };
 

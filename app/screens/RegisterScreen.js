@@ -8,6 +8,7 @@ import authApi from '../api/auth';
 import useAuth from '../auth/useAuth';
 import useApi from '../hooks/useApi';
 import ActivityIndicator from '../components/ActivityIndicator';
+import logger from '../utility/logger';
 
 const validationSchema = Yup.object().shape({
    name: Yup.string().required().label('Name'),
@@ -31,7 +32,7 @@ function RegisterScreen() {
          const { data: token } = await loginApi.request(email, password);
          login(token);
       } catch (error) {
-         console.log(error);
+         logger.log(error);
       }
    };
 

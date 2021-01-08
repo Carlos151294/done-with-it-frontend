@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppLoading } from 'expo';
 
@@ -9,8 +9,13 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 import AuthContext from './app/auth/context';
 import authStorage from './app/auth/storage';
 import { navigationRef } from './app/navigation/rootNavigation';
+import logger from './app/utility/logger';
 
-export default function App() {
+if (logger.exists()) {
+  logger.start();
+}
+
+export default function App() { 
   const [user, setUser] = useState(null);
   const [isReady, setIsReady] = useState(false);
 

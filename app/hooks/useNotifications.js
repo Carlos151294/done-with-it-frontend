@@ -3,6 +3,7 @@ import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 
 import expoPushTokensApi from '../api/expoPushTokens';
+import logger from '../utility/logger';
 
 export default (notificationListener) => { 
     useEffect(() => {
@@ -21,7 +22,7 @@ export default (notificationListener) => {
             const { data: token } = await Notifications.getExpoPushTokenAsync();
             expoPushTokensApi.register(token);
         } catch (error) {
-            console.log(error);
+            logger.log(error);
         }
     };
 };
