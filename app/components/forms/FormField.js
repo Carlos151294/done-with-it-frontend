@@ -5,7 +5,7 @@ import TextInput from '../TextInput';
 import ErrorMessage from './ErrorMessage';
 
 function AppFormField({ name, ...otherProps }) {
-   const { setFieldTouched, setFieldValue, handleChange, errors, touched, values } = useFormikContext();
+   const { setFieldTouched, setFieldValue, errors, touched, values } = useFormikContext();
    return (
       <React.Fragment>
          <TextInput 

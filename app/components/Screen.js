@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Platform, View } from 'react-native';
+import { StyleSheet, Platform, View, StatusBar } from 'react-native';
+import Constants from 'expo-constants';
 
 const Screen = ({ children, style }) => {
     return (
@@ -12,7 +13,7 @@ const Screen = ({ children, style }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === 'android' ? 25 : 50
+        paddingTop: Constants.statusBarHeight
     }
 })
 

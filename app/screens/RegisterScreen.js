@@ -25,7 +25,7 @@ function RegisterScreen() {
       try {
          const result = await registerApi.request(name, email, password);
          
-         if (!result.ok) return setRegisterFailed({ status: true, message: result.data.error});
+         if (!result.ok) return setRegisterFailed({ status: true, message: result.data ? result.data.error : result.problem});
          setRegisterFailed(false); 
 
          const { data: token } = await loginApi.request(email, password);

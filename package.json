@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "reinstall": "rm -rf node_modules && rm -rf package-lock.json && npm i"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
@@ -38,7 +39,8 @@
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.11.7",
     "yup": "^0.29.1",
-    "expo-secure-store": "~9.0.1"
+    "expo-secure-store": "~9.0.1",
+    "expo-notifications": "~0.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
